@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandhes RP - GTA 5 RolePlay проект | Зимняя версия</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #1e3a5f;
+            --accent-color: #ff6b6b;
+            --text-color: #f0f8ff;
+            --dark-bg: #0d1b2a;
+            --neon-blue: #4cc9f0;
+            --neon-purple: #9d4edd;
+            --snow-white: #ffffff;
+            --ice-blue: #a0d2eb;
+            --winter-teal: #5dbea3;
+            --frost-gradient: linear-gradient(135deg, #0a192f 0%, #1e3a5f 50%, #0d1b2a 100%);
+            --snow-gradient: linear-gradient(180deg, rgba(160, 210, 235, 0.1) 0%, transparent 100%);
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--frost-gradient);
+            min-height: 100vh;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        /* Зимний фон со снежинками */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(160, 210, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(93, 190, 163, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
         h1, h2, h3, h4 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
@@ -12,13 +69,14 @@
         
         /* Header */
         header {
-            background-color: rgba(10, 10, 20, 0.9);
+            background-color: rgba(10, 25, 47, 0.95);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--ice-blue);
         }
         
         .logo {
@@ -29,7 +87,7 @@
             font-size: 1.8rem;
             font-weight: 900;
             color: var(--neon-blue);
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.7);
         }
         
         .logo i {
@@ -37,11 +95,45 @@
             font-size: 2.2rem;
         }
         
+        /* Зимний баннер */
+        .winter-banner {
+            background: linear-gradient(90deg, rgba(10, 25, 47, 0.9), rgba(30, 58, 95, 0.9));
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--ice-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .winter-banner::before {
+            content: '❄️';
+            position: absolute;
+            left: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .winter-banner::after {
+            content: '⛄';
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .winter-banner p {
+            font-size: 1.1rem;
+            color: var(--ice-blue);
+            font-weight: 500;
+        }
+        
         /* Hero section */
         .hero {
             padding: 100px 0;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
             position: relative;
             overflow: hidden;
         }
@@ -53,8 +145,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
-            opacity: 0.1;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            opacity: 0.08;
             z-index: -1;
         }
         
@@ -63,22 +155,38 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: white;
-            text-shadow: 0 0 15px var(--neon-purple);
-            animation: pulse 3s infinite alternate;
+            color: var(--snow-white);
+            text-shadow: 
+                0 0 15px var(--neon-purple),
+                0 0 5px rgba(255, 255, 255, 0.5);
+            animation: winter-pulse 3s infinite alternate;
+            background: linear-gradient(45deg, var(--snow-white), var(--ice-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero p {
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 40px;
-            color: #ccc;
+            color: #e0f7ff;
         }
         
         .highlight {
-            color: var(--neon-blue);
+            color: var(--ice-blue);
             font-weight: bold;
-            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+            text-shadow: 0 0 5px rgba(160, 210, 235, 0.5);
+            position: relative;
+            padding: 0 5px;
+        }
+        
+        .highlight::after {
+            content: '❄';
+            position: absolute;
+            right: -15px;
+            top: -5px;
+            font-size: 0.8rem;
         }
         
         /* Buttons */
@@ -93,7 +201,7 @@
         .btn {
             padding: 15px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             font-size: 1.1rem;
@@ -106,24 +214,27 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            border: 2px solid transparent;
         }
         
         .btn-download {
-            background: linear-gradient(45deg, var(--accent-color), #ff2e63);
+            background: linear-gradient(45deg, var(--accent-color), #ff8e8e);
             color: white;
-            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            border-color: #ff8e8e;
         }
         
         .btn-connect {
-            background: linear-gradient(45deg, var(--neon-blue), #00b4d8);
+            background: linear-gradient(45deg, var(--ice-blue), #6bc5eb);
             color: white;
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(160, 210, 235, 0.4);
+            border-color: #6bc5eb;
         }
         
         .btn-social {
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .btn:hover {
@@ -142,7 +253,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
             z-index: -1;
         }
@@ -155,14 +266,34 @@
         .section {
             padding: 80px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        
+        .section::before {
+            content: '❄️';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            opacity: 0.3;
+            font-size: 1.5rem;
+        }
+        
+        .section::after {
+            content: '⛄';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.3;
+            font-size: 1.5rem;
         }
         
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
-            color: white;
+            color: var(--snow-white);
             position: relative;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         
         .section-title::after {
@@ -173,7 +304,8 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent-color), var(--neon-blue));
+            background: linear-gradient(90deg, var(--accent-color), var(--ice-blue));
+            box-shadow: 0 0 10px rgba(160, 210, 235, 0.5);
         }
         
         /* Info boxes */
@@ -185,19 +317,20 @@
         }
         
         .info-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
             padding: 30px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(160, 210, 235, 0.1);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .info-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: var(--neon-blue);
+            border-color: var(--ice-blue);
         }
         
         .info-card::before {
@@ -207,11 +340,20 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--accent-color), var(--neon-blue));
+            background: linear-gradient(to bottom, var(--accent-color), var(--ice-blue));
+        }
+        
+        .info-card::after {
+            content: '✦';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--ice-blue);
+            opacity: 0.5;
         }
         
         .info-card h3 {
-            color: var(--neon-blue);
+            color: var(--ice-blue);
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
@@ -224,12 +366,26 @@
         
         /* Connection details */
         .connection-details {
-            background-color: rgba(15, 52, 96, 0.2);
-            border-radius: 10px;
+            background: rgba(30, 58, 95, 0.3);
+            border-radius: 15px;
             padding: 30px;
             margin: 40px auto;
             max-width: 800px;
             border-left: 5px solid var(--accent-color);
+            border-right: 1px solid rgba(160, 210, 235, 0.2);
+            border-top: 1px solid rgba(160, 210, 235, 0.1);
+            border-bottom: 1px solid rgba(160, 210, 235, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .connection-details::before {
+            content: '🔌';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.2;
+            font-size: 1.5rem;
         }
         
         .details-grid {
@@ -240,16 +396,30 @@
         }
         
         .detail-item {
-            background-color: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.2);
             padding: 15px;
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(160, 210, 235, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .detail-item:hover {
+            border-color: var(--ice-blue);
+            transform: translateY(-3px);
         }
         
         .detail-label {
             font-weight: bold;
-            color: var(--neon-blue);
+            color: var(--ice-blue);
             margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-label::before {
+            content: '❯';
+            color: var(--accent-color);
         }
         
         /* Social links */
@@ -266,17 +436,19 @@
             align-items: center;
             gap: 10px;
             padding: 12px 25px;
-            background-color: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50px;
             text-decoration: none;
             color: white;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
         }
         
         .social-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
+            border-color: var(--ice-blue);
         }
         
         .discord { color: #7289da; }
@@ -285,21 +457,52 @@
         
         /* Footer */
         footer {
-            background-color: rgba(0, 0, 0, 0.5);
+            background: rgba(10, 25, 47, 0.8);
             padding: 30px 0;
             text-align: center;
             margin-top: 50px;
+            border-top: 2px solid rgba(160, 210, 235, 0.2);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '🎮';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+        
+        footer::after {
+            content: '❄️';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.5;
         }
         
         .copyright {
-            color: #aaa;
+            color: #a0d2eb;
             font-size: 0.9rem;
         }
         
         /* Animations */
-        @keyframes pulse {
-            0% { text-shadow: 0 0 15px var(--neon-purple); }
-            100% { text-shadow: 0 0 25px var(--neon-purple), 0 0 35px var(--neon-purple); }
+        @keyframes winter-pulse {
+            0% { 
+                text-shadow: 
+                    0 0 15px var(--neon-purple),
+                    0 0 5px rgba(255, 255, 255, 0.5);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px var(--neon-purple),
+                    0 0 15px rgba(160, 210, 235, 0.7),
+                    0 0 5px rgba(255, 255, 255, 0.8);
+            }
         }
         
         @keyframes float {
@@ -307,8 +510,32 @@
             50% { transform: translateY(-10px); }
         }
         
+        @keyframes snow-fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        
         .floating {
             animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Snowflakes */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snow-fall linear infinite;
         }
         
         /* Responsive */
@@ -335,32 +562,32 @@
             .info-grid {
                 grid-template-columns: 1fr;
             }
-        }
-        
-        /* Particle background effect */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .particle {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
+            
+            footer::before,
+            footer::after {
+                display: none;
+            }
         }
         
         /* Instructions */
         .instructions {
-            background-color: rgba(22, 33, 62, 0.5);
-            border-radius: 10px;
+            background: rgba(30, 58, 95, 0.3);
+            border-radius: 15px;
             padding: 25px;
             margin-top: 30px;
-            border-left: 5px solid var(--neon-blue);
+            border-left: 5px solid var(--ice-blue);
+            position: relative;
+        }
+        
+        .instructions::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 1.2rem;
         }
         
         .instructions ol {
@@ -370,6 +597,36 @@
         
         .instructions li {
             margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
+        /* Winter special */
+        .winter-special {
+            background: linear-gradient(45deg, rgba(30, 58, 95, 0.3), rgba(93, 190, 163, 0.2));
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px auto;
+            text-align: center;
+            border: 2px solid rgba(160, 210, 235, 0.3);
+            position: relative;
+            max-width: 800px;
+        }
+        
+        .winter-special::before {
+            content: '🎁';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .winter-special h3 {
+            color: var(--ice-blue);
+            margin-bottom: 15px;
         }
         
         /* Download steps */
@@ -381,50 +638,64 @@
         }
         
         .step-card {
-            background: rgba(15, 52, 96, 0.2);
+            background: rgba(30, 58, 95, 0.3);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            border: 1px solid rgba(160, 210, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            border-color: var(--ice-blue);
+            transform: translateY(-5px);
         }
         
         .step-number {
             display: inline-block;
             width: 40px;
             height: 40px;
-            background: var(--neon-blue);
+            background: var(--ice-blue);
             color: var(--primary-color);
             border-radius: 50%;
             line-height: 40px;
             font-weight: bold;
             margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(160, 210, 235, 0.5);
         }
         
         .step-card h4 {
-            color: var(--neon-blue);
+            color: var(--ice-blue);
             margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Particle background -->
-    <div class="particles" id="particles"></div>
+    <!-- Снежинки -->
+    <div class="snowflakes" id="snowflakes"></div>
     
     <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <i class="fas fa-gamepad"></i>
-                <span>Mandhes RP</span>
+                <i class="fas fa-snowflake"></i>
+                <span>Mandhes RP ❄️</span>
             </div>
         </div>
     </header>
     
+    <!-- Зимний баннер -->
+    <div class="winter-banner">
+        <div class="container">
+            <p>🎄 Зимний сезон на Mandhes RP! Присоединяйся к праздничным ивентам! 🎅</p>
+        </div>
+    </div>
+    
     <!-- Hero section -->
     <section class="hero">
         <div class="container">
-            <h1>Mandhes RP</h1>
-            <p>Добро пожаловать на официальный сайт проекта <span class="highlight">Mandhes RP</span> - уникального GTA 5 RolePlay сервера с глубокой проработкой мира, экономикой и реалистичными механиками. Присоединяйся к нашему сообществу!</p>
+            <h1>Mandhes RP ❄️</h1>
+            <p>Добро пожаловать на официальный сайт проекта <span class="highlight">Mandhes RP</span> - уникального GTA 5 RolePlay сервера с глубокой проработкой мира, экономикой и реалистичными механиками. Присоединяйся к нашему сообществу в этот зимний сезон!</p>
             
             <div class="buttons">
                 <a href="https://cdn-r2.rgsvc.io/public/files/RAGEMultiplayer_Setup.exe" class="btn btn-download" target="_blank">
@@ -435,6 +706,16 @@
                     <i class="fas fa-plug"></i>
                     Присоединиться к серверу
                 </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Зимнее спецпредложение -->
+    <section class="section">
+        <div class="container">
+            <div class="winter-special">
+                <h3><i class="fas fa-gift"></i> Зимний ивент на сервере!</h3>
+                <p>В этом сезоне на сервере проходят специальные зимние ивенты с уникальными наградами, праздничным декором Лос-Сантоса и тематическими заданиями. Не пропусти!</p>
             </div>
         </div>
     </section>
@@ -483,7 +764,7 @@
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <h4>Установить Radmin VPN</h4>
-                    <p><a href="https://download.radmin-vpn.com/download/files/Radmin_VPN_2.0.4899.9.exe" target="_blank" style="color: var(--neon-blue);">Скачать Radmin VPN</a> для подключения к сети сервера</p>
+                    <p><a href="https://download.radmin-vpn.com/download/files/Radmin_VPN_2.0.4899.9.exe" target="_blank" style="color: var(--ice-blue); font-weight: bold;">Скачать Radmin VPN</a> для подключения к сети сервера</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
@@ -521,14 +802,14 @@
                     
                     <div class="detail-item">
                         <div class="detail-label">Статус сервера:</div>
-                        <div class="detail-value"><span style="color: #4CAF50;">●</span> Онлайн (игроков: 147/250)</div>
+                        <div class="detail-value"><span style="color: #5dbea3;">●</span> Онлайн (игроков: 147/250)</div>
                     </div>
                 </div>
                 
                 <div class="instructions" style="margin-top: 30px;">
                     <h4><i class="fas fa-exclamation-triangle"></i> Важно!</h4>
                     <p>Для корректной работы сервера обязательно установите Radmin VPN. Без него подключиться к нашему серверу будет невозможно.</p>
-                    <p><a href="https://download.radmin-vpn.com/download/files/Radmin_VPN_2.0.4899.9.exe" target="_blank" style="color: var(--neon-blue); text-decoration: underline;">Скачать Radmin VPN можно по этой ссылке</a></p>
+                    <p><a href="https://download.radmin-vpn.com/download/files/Radmin_VPN_2.0.4899.9.exe" target="_blank" style="color: var(--ice-blue); text-decoration: underline; font-weight: bold;">Скачать Radmin VPN можно по этой ссылке</a></p>
                 </div>
             </div>
         </div>
@@ -583,7 +864,7 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">Наши сообщества</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Присоединяйтесь к нашим сообществам в социальных сетях, чтобы быть в курсе всех новостей, обновлений и мероприятий проекта Mandhes RP.</p>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Присоединяйтесь к нашим сообществам в социальных сетях, чтобы быть в курсе всех новостей, обновлений и зимних мероприятий проекта Mandhes RP.</p>
             
             <div class="social-links">
                 <a href="https://discord.gg/Y9EfsrhTDd" class="social-link discord" target="_blank">
@@ -608,37 +889,36 @@
     <footer>
         <div class="container">
             <div class="logo" style="justify-content: center; margin-bottom: 20px;">
-                <i class="fas fa-gamepad"></i>
-                <span>Mandhes RP</span>
+                <i class="fas fa-snowflake"></i>
+                <span>Mandhes RP ❄️</span>
             </div>
             <p class="copyright">© 2023 Mandhes RP. Все права защищены. Grand Theft Auto V является товарным знаком Take-Two Interactive Software Inc.</p>
         </div>
     </footer>
     
     <script>
-        // Particle background
+        // Снежинки
         document.addEventListener('DOMContentLoaded', function() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+            const snowflakesContainer = document.getElementById('snowflakes');
+            const snowflakeCount = 100;
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
                 
                 const size = Math.random() * 5 + 2;
                 const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
                 const delay = Math.random() * 5;
                 const duration = Math.random() * 10 + 10;
+                const opacity = Math.random() * 0.7 + 0.3;
                 
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.left = `${posX}%`;
+                snowflake.style.opacity = opacity;
+                snowflake.style.animation = `snow-fall ${duration}s linear ${delay}s infinite`;
                 
-                particlesContainer.appendChild(particle);
+                snowflakesContainer.appendChild(snowflake);
             }
             
             // Smooth scroll for anchor links
@@ -652,7 +932,7 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
                         });
                     }
@@ -676,6 +956,12 @@
             // Observe all info cards
             document.querySelectorAll('.info-card').forEach(card => {
                 observer.observe(card);
+            });
+            
+            // Зимний эффект для текста
+            const winterTexts = document.querySelectorAll('.section-title, .info-card h3');
+            winterTexts.forEach(text => {
+                text.style.textShadow = '0 2px 10px rgba(160, 210, 235, 0.5)';
             });
         });
     </script>
